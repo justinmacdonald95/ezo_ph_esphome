@@ -1,8 +1,10 @@
 {
-  "name": "ezo_ph",
   "domain": "ezo_ph",
+  "name": "Atlas EZO pH Sensor",
   "version": "1.0.0",
-  "documentation": "https://github.com/justinmacdonald95/ezo_ph_esphome",
-  "dependencies": ["uart"],
-  "requirements": []
+  "documentation": "https://github.com/<your-username>/ezo_ph_esphome",
+  "requirements": [],
+  "codeowners": ["@<your-username>"],
+  "components": ["sensor"],
+  "iot_class": "local_polling"
 }

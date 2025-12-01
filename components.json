@@ -1,9 +1,6 @@
 {
-  "components": [
-    {
-      "name": "ezo_ph",
-      "domain": "ezo_ph",
-      "manifest": "components/ezo_ph/manifest.json"
-    }
-  ]
+  "ezo_ph": {
+    "source": "github://<your-username>/ezo_ph_esphome",
+    "components": ["ezo_ph"]
+  }
 }
