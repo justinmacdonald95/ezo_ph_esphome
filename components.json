@@ -1,6 +1,5 @@
 {
-  "ezo_ph": {
-    "source": "github://<your-username>/ezo_ph_esphome",
-    "components": ["ezo_ph"]
+  "components": {
+    "ezo_ph": "./components/ezo_ph"
   }
 }
