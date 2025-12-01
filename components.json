@@ -1,0 +1,10 @@
+{
+  "name": "ezo_ph_esphome",
+  "version": "1.0.0",
+  "components": [
+    {
+      "id": "ezo_ph",
+      "path": "ezo_ph"
+    }
+  ]
+}
