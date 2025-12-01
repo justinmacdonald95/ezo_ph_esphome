@@ -1,5 +1,9 @@
 {
-  "components": {
-    "ezo_ph": "./components/ezo_ph"
-  }
+  "components": [
+    {
+      "id": "ezo_ph",
+      "type": "sensor",
+      "path": "ezo_ph"
+    }
+  ]
 }
