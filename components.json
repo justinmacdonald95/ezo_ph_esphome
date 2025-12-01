@@ -3,7 +3,7 @@
     {
       "id": "ezo_ph",
       "type": "sensor",
-      "path": "ezo_ph"
+      "path": "components/ezo_ph"
     }
   ]
 }

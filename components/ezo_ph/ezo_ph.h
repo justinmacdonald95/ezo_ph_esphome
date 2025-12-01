@@ -1,40 +1,43 @@
 #pragma once
-#include "esphome/core/component.h"
-#include "esphome/components/uart/uart.h"
-#include "esphome/components/sensor/sensor.h"
+#include "esphome.h"
 
 namespace esphome {
 namespace ezo_ph {
 
-class EZOPHSensor : public uart::UARTDevice, public sensor::Sensor, public Component {
+class EZOPhSensor : public PollingSensorComponent {
  public:
-  EZOPHSensor(uart::UARTComponent *parent) : uart::UARTDevice(parent) {}
+  UARTComponent *uart;
 
   void setup() override {
-    // Nothing required — EZO automatically replies on "R" command.
+    // This will be called by ESPHome when initializing the component
+    ESP_LOGD("ezo_ph", "Setup complete");
   }
 
   void update() override {
-    this->write_str("R\r");
-  }
+    // Poll the EZO UART sensor
+    if (!uart) return;
 
-  void loop() override {
-    while (this->available()) {
-      char c = this->read();
-      if (c == '\r' || c == '\n') {
-        if (!buffer_.empty()) {
-          float ph = atof(buffer_.c_str());
-          publish_state(ph);
-          buffer_.clear();
-        }
-      } else {
-        buffer_ += c;
+    // Request a reading (send "R\r")
+    uart->write_array((uint8_t*)"R\r", 2);
+
+    // Read response (blocking here for simplicity)
+    String response;
+    unsigned long start = millis();
+    while (millis() - start < 500) {  // wait max 500ms
+      if (uart->available()) {
+        char c = uart->read();
+        response += c;
       }
     }
-  }
 
- protected:
-  std::string buffer_;
+    if (response.length() > 0) {
+      float value = response.toFloat();
+      publish_state(value);
+      ESP_LOGD("ezo_ph", "pH = %.2f", value);
+    } else {
+      ESP_LOGW("ezo_ph", "No response from EZO pH sensor");
+    }
+  }
 };
 
 }  // namespace ezo_ph
