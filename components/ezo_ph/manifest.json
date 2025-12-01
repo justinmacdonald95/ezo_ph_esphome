@@ -1,0 +1,8 @@
+{
+  "name": "ezo_ph",
+  "domain": "ezo_ph",
+  "version": "1.0.0",
+  "documentation": "https://github.com/justinmacdonald95/ezo_ph_esphome",
+  "dependencies": ["uart"],
+  "requirements": []
+}
