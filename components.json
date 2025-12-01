@@ -1,10 +1,17 @@
 {
-  "name": "ezo_ph_esphome",
+  "domain": "ezo_ph_esphome",
+  "name": "Atlas EZO pH UART Sensor",
   "version": "1.0.0",
+  "documentation": "https://github.com/justinmacdonald95/ezo_ph_esphome",
   "components": [
     {
       "id": "ezo_ph",
-      "path": "ezo_ph"
+      "files": [
+        "components/ezo_ph/__init__.py",
+        "components/ezo_ph/sensor.py",
+        "components/ezo_ph/ezo_ph.h",
+        "components/ezo_ph/ezo_ph.cpp"
+      ]
     }
   ]
 }
